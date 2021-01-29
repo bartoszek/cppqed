@@ -138,7 +138,7 @@ function(get_git_head_revision _refspecvar _hashvar)
             string(REGEX REPLACE "gitdir: (.*)$" "\\1" git_worktree_dir
                                  ${worktree_ref})
             string(STRIP ${git_worktree_dir} git_worktree_dir)
-            if(NOT EXISTS "${git_worktree_dir}/HEAD")
+            if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${git_worktree_dir}/HEAD")
                 _git_find_closest_git_dir("${git_worktree_dir}" GIT_DIR)
             endif()
             set(HEAD_SOURCE_FILE "${git_worktree_dir}/HEAD")
